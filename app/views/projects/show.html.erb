@@ -1,5 +1,9 @@
 <h1><%= @project.title %></h1>
 <br>
+
+<p>This is a <%= @project.team.name %> project.</p>
+
+<br>
 <%= @project.description %>
 <br>
 
@@ -7,6 +11,9 @@
   <br>
   <%= link_to item.title, item_url(item) %>
 <% end %>
+<br>
 
 <br>
 <%= link_to "Add new item", new_item_url %>
+<br>
+<%= link_to @project.team.name, team_url(@project.team_id) %>

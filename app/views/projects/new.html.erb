@@ -15,5 +15,15 @@
   </label>
   <br>
 
+  <label>
+    Team
+    <select name="project[team_id]">
+      <% @teams.each do |team| %>
+        <option value="<%= team.id %>"><%= team.name %></option>
+      <% end %>
+    </select>
+  </label>
+  <br>
+
   <input type="submit" value="Create Project!">
 </form>

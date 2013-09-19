@@ -1,0 +1,13 @@
+<h1>Create Team</h1>
+<form action="<%= teams_url %>" method="post">
+
+  <input type="hidden" name="authenticity_token"
+  value="<%= form_authenticity_token %>">
+
+  <label>
+    Team name
+    <input type="text" name="team[name]" value="<%= @team.name %>">
+  </label>
+
+  <input type="submit" value="Create team!">
+</form>

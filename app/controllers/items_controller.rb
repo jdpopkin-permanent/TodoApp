@@ -7,7 +7,8 @@ class ItemsController < ApplicationController
   end
 
   def show
-
+    @item = Item.find(params[:id])
+    render :show
   end
 
   def create
@@ -25,11 +26,22 @@ class ItemsController < ApplicationController
   end
 
   def edit
-
+    @item = Item.find(params[:id])
+    @projects = Project.all
+    render :edit
   end
 
   def update
+    @item = Item.find(params[:id])
 
+    if @item.update_attributes(params[:item])
+      redirect_to project_url(@item.project_id)
+    else
+      flash.now[:errors] ||= []
+      flash.now[:errors] += @item.errors.full_messages
+      @projects = Project.all
+      render :new
+    end
   end
 
 end
