@@ -7,29 +7,30 @@
 <%= @project.description %>
 <br>
 
-<% @project.items.each do |item| %>
-  <br>
-  <%= link_to item.title, item_url(item) %>
+<form action="<%= batch_update_items_url %>" method="post">
+  <input  type="hidden" name="authenticity_token"
+          value="<%= form_authenticity_token %>">
 
-  <form action="<%= item_url(item) %>" method="post">
-    <input type="hidden" name="authenticity_token"
-    value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="put">
 
-    <input type="hidden" name="_method" value="put">
+  <% @project.items.each do |item| %>
+    <br>
+    <%= link_to item.title, item_url(item) %>
 
-    <input type="hidden" name="item[completed]" value="false">
 
+    <input type="hidden" name="items[<%= item.id %>][completed]" value="false">
+    <br>
     <label>
       Item completed?
-      <input type="checkbox" name="item[completed]" value="true"
+      <input type="checkbox" name="items[<%= item.id %>][completed]" value="true"
       <%= item.completed ? "checked" : "" %>>
     </label>
+    <br>
 
-    <input type="submit" value="Update">
-  </form>
-  <br>
+  <% end %>
 
-<% end %>
+  <input type="submit" value="Update items">
+</form>
 <br>
 
 <br>

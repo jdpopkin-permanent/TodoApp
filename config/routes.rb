@@ -4,7 +4,11 @@ TodoApp::Application.routes.draw do
     resources :items, only: [:index]
   end
 
-  resources :items
+  resources :items do
+    collection do
+      put "batch_update"
+    end
+  end
 
   resources :teams do
     resources :projects, only: [:new]
