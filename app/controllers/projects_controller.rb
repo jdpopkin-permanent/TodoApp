@@ -6,6 +6,8 @@ class ProjectsController < ApplicationController
   end
 
   def new
+    @team_id = params[:team_id]
+    @teams = Team.all
     render :new
   end
 

@@ -44,4 +44,11 @@ class ItemsController < ApplicationController
     end
   end
 
+  def index
+    @project_id = params[:project_id]
+    @items = Item.where(project_id: @project_id)
+
+    render :index
+  end
+
 end

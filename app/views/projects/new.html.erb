@@ -19,7 +19,8 @@
     Team
     <select name="project[team_id]">
       <% @teams.each do |team| %>
-        <option value="<%= team.id %>"><%= team.name %></option>
+        <option value="<%= team.id %>" selected="<%= @team_id == team.id ?
+           "selected" : "" %>"><%= team.name %></option>
       <% end %>
     </select>
   </label>
