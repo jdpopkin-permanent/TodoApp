@@ -20,4 +20,9 @@ class TeamsController < ApplicationController
       render :new
     end
   end
+
+  def index
+    @teams = Team.all
+    render :index
+  end
 end

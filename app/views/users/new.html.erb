@@ -1,0 +1,22 @@
+<h1>New User</h1>
+<form action="<%= users_url %>" method="post">
+
+  <input type="hidden" name="authenticity_token"
+  value="<%= form_authenticity_token %>">
+
+  <label>
+    Name
+    <input type="text" name="user[name]" value="<%= @user.name %>">
+  </label>
+
+  <% @teams.each do |team| %>
+    <label>
+      <%= team.name %>
+      <input type="checkbox" name="user[team_ids][]" value="<%= team.id %>">
+    </label>
+  <% end %>
+
+  <input type="submit" value="Create user!">
+
+
+</form>

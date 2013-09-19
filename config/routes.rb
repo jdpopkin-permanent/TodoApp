@@ -3,6 +3,7 @@ TodoApp::Application.routes.draw do
   resources :projects
   resources :items
   resources :teams
+  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
