@@ -10,6 +10,25 @@
 <% @project.items.each do |item| %>
   <br>
   <%= link_to item.title, item_url(item) %>
+
+  <form action="<%= item_url(item) %>" method="post">
+    <input type="hidden" name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+
+    <input type="hidden" name="_method" value="put">
+
+    <input type="hidden" name="item[completed]" value="false">
+
+    <label>
+      Item completed?
+      <input type="checkbox" name="item[completed]" value="true"
+      <%= item.completed ? "checked" : "" %>>
+    </label>
+
+    <input type="submit" value="Update">
+  </form>
+  <br>
+
 <% end %>
 <br>
 
