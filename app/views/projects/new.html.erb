@@ -1,0 +1,19 @@
+<h1>Create a Project</h1>
+<form action="<%= projects_url %>" method="post">
+  <input type="hidden" name="authenticity_token"
+      value="<%= form_authenticity_token %>">
+
+  <label>
+    Project Title
+    <input type="text" name="project[title]">
+  </label>
+  <br>
+
+  <label>
+    Project Description
+    <textarea name="project[description]"></textarea>
+  </label>
+  <br>
+
+  <input type="submit" value="Create Project!">
+</form>

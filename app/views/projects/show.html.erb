@@ -1,0 +1,12 @@
+<h1><%= @project.title %></h1>
+<br>
+<%= @project.description %>
+<br>
+
+<% @project.items.each do |item| %>
+  <br>
+  <%= link_to item.title, item_url(item) %>
+<% end %>
+
+<br>
+<%= link_to "Add new item", new_item_url %>
